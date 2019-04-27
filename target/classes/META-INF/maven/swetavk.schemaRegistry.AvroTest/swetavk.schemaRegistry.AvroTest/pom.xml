@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>swetavk.schemaRegistry.AvroTest</groupId>
+  <artifactId>swetavk.schemaRegistry.AvroTest</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>SchemaResgistry.AvroTest</name>
+  
+  <repositories>
+   <repository>
+    <id>confluent</id>
+    <url>http://packages.confluent.io/maven/</url>
+  </repository>
+  </repositories>
+  <dependencies>
+  
+ <dependency>
+ 	<groupId>org.apache.avro</groupId>
+  	<artifactId>avro</artifactId>
+  	<version>1.7.7</version>
+ </dependency>
+  
+  <dependency>
+    <groupId>org.apache.kafka</groupId>
+    <artifactId>kafka_2.12</artifactId>
+    <version>1.1.1</version>
+</dependency>
+
+<dependency>
+    <groupId>io.confluent</groupId>
+    <artifactId>kafka-avro-serializer</artifactId>
+    <!-- For CP 3.0.0 -->
+    <version>3.2.1</version>
+  </dependency>
+  
+  </dependencies>
+  <build>
+ 
+  <plugins>
+    <plugin>
+      <groupId>org.apache.avro</groupId>
+      <artifactId>avro-maven-plugin</artifactId>
+      <version>1.7.7</version>
+      <executions>
+        <execution>
+          <phase>generate-sources</phase>
+          <goals>
+            <goal>schema</goal>
+          </goals>
+          <configuration>
+            <sourceDirectory>${project.basedir}/src/main/java/</sourceDirectory>
+            <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
+          </configuration>
+        </execution>
+      </executions>
+  </plugin>
+  <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-compiler-plugin</artifactId>
+     <configuration>
+       <source>1.7</source>
+       <target>1.7</target>
+     </configuration>
+   </plugin>
+  </plugins>
+ 
+</build>
+</project>
